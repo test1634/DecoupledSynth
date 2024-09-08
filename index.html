@@ -18,11 +18,10 @@
         <h1>DecoupledSynth: Enhancing Zero-Shot Text-to-Speech via factors decoupling</h1>
                     <li><a href='#section-1'>Experiments on VCTK</a></li>
                     <li><a href='#section-2'>Experiments on LibriTTS</a></li>
-                    <li><a href='#section-3'>Ablation study</a></li>
                     <li><a href='#section-5'>Compared with VALL-EX</a></li>
                     <li><a href='#section-6'>Compared with HierSpeech</a></li>
                     <li><a href='#section-4'>Compared with NaturalSpeech 3</a></li>
-                    <li><a href='#section-7'>Validation of Decom Features Decoupling Capabilities</a></li>
+                    <li><a href='#section-3'>Ablation study</a></li>
 
         <h3>Decoupled Components Features (Decom Features) Extractor.</h3>
         <p>
@@ -582,258 +581,7 @@
 </table>
 
     </div>
-    <hr>
 
-    <div id='section-3' class='section'>
-        <h2>Ablation study</h2>
-        <li>An ablation study was conducted to verify the effectiveness of
-the Decom Features and decoupled prompts of reference speech in DecoupledSynth.</li>
-
-        <li>For Decom Features ablation, we use Hubert features and extract timbre information using a style encoder, which are common choices for traditional zero-shot TTS speech synthesis. It is called "-w/o Decom"</li>
-                <li>For decoupled prompts of reference speech ablation, we extract the single prompt of the reference speech using a unified style encoder. It is called "-w/o DeRef"</li>
-                <li>The experimental setup was consistent with the comparison experiments.</li>
-                <li>The first 2 to 3 seconds of the ground truth speech are extracted as reference speech, with the precise duration determined by the Voice Activity Detection (VAD) cutoff point. Care is taken to ensure that the extracted segment ends at the completion of a full word pronunciation.</li>
-        <hr>
-
-
-        <h3>Ablation study on VCTK Test Set</h3>
-
-
-<p> 1. Text: We also need a small plastic snake and a big toy frog for the kids.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="1/p238_004/3.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p238_004/1.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p238_004/2.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p238_004/4.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 2. Text: Suggestions of the action being a punishment were dismissed.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="1/p248_034/3.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p248_034/1.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="1/p248_034/2.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="1/p248_034/4.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 3. Text: When a man looks for something beyond his reach, his friends say he is looking for the pot of gold at the end of the rainbow. </p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="1/p261_011/3.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p261_011/1.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="1/p261_011/2.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="1/p261_011/4.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 4. Text: Others have tried to explain the phenomenon physically.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="1/p302_017/3.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p302_017/1.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="1/p302_017/2.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="1/p302_017/4.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 5. Text: After day one back, he may be revising that opinion already.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="1/p326_140/3.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="1/p326_140/1.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="1/p326_140/2.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="1/p326_140/4.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-                <hr>
-
-        <h3>Ablation study on LibriTTS Development Set</h3>
-
-<p> 1. Text: I was walking backward, in a crouching position, when I heard Antonia scream.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/4.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/2.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/1.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 2. Text: As soon as they beheld the twilight of sense and heresy, they started, measured back their steps, and were again involved in the gloom of impenetrable orthodoxy.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/4.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/2.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/1.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 3. Text: He had stolen out during the half hour allowed at the works for tea, to buy them an orange or two, which now puffed out his jacket pocket.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/4.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/2.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/1.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-=
-                        <hr>
-
-        <h3>Ablation study on LibriTTS Test Set</h3>
-
-
-
-<p> 2. Text: But, sir, how shall I find a teacher?</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/4.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/2.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/1.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-
-<p> 2. Text: That is to say if we suppose that A is the event remembered, B the remembering, and t the interval of time between A and B, there must be some characteristic of B which is capable of degrees, and which, in accurately dated memories, varies as t varies. It may increase as t increases, or diminish as t increases.</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/4.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/2.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/1.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 3. Text: "First, bind the Earth Man in the frame," commanded the Boolooroo. "We'll slice him in two before we do the same to the billygoat."</p>
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th style="text-align: center">Ground Truth<strong></strong></th>
-      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/4.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/2.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/1.wav" controls="" preload=""></audio></td>
-    </tr>
-  </tbody>
-</table>
-
-
-    </div>
 <hr>
     <div id='section-5' class='section'>
         <h2>Compared with VALL-EX</h2>
@@ -1098,34 +846,254 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
 
     <hr>
 
-    <div id='section-7' class='section'>
-        <h2>Validation of Decom Features Decoupling Capabilities</h2>
-        <li>We proposed DecoupledSynth. This work improves the performance of zero-shot TTS by decoupling the speech. In addition, relying on our decoupled representations of decom features, we can also achieve the embedding of rhymes in a timbre-invariant manner.</li>
-        <li> The work on single rhyme embedding is not fully complete but can be used to validate the decoupling effect of Decoupled Components Features.</li>
-        <li>In the table below, Speaker denotes the first reference speech and Prosody denotes the second reference speech.</li>
-        <li>DecoupledSynth denotes a zero-shot TTS using only Speaker as reference speech.</li>
-        <li>DecoupledSynth (Prosody) then denotes the result of zero-shot TTS using Speaker with Prosody embedded in para-linguistic features.</li>
+    <div id='section-3' class='section'>
+        <h2>Ablation study</h2>
+        <li>An ablation study was conducted to verify the effectiveness of
+the Decom Features and decoupled prompts of reference speech in DecoupledSynth.</li>
+
+        <li>For Decom Features ablation, we use Hubert features and extract timbre information using a style encoder, which are common choices for traditional zero-shot TTS speech synthesis. It is called "-w/o Decom"</li>
+                <li>For decoupled prompts of reference speech ablation, we extract the single prompt of the reference speech using a unified style encoder. It is called "-w/o DeRef"</li>
+                <li>The experimental setup was consistent with the comparison experiments.</li>
+                <li>The first 2 to 3 seconds of the ground truth speech are extracted as reference speech, with the precise duration determined by the Voice Activity Detection (VAD) cutoff point. Care is taken to ensure that the extracted segment ends at the completion of a full word pronunciation.</li>
         <hr>
 
-                <p> Text: By this time, Lord Shelford and Wilder returned, and disgusted rather with myself, I ruminated on the want of generalship.</p>
+
+        <h3>Ablation study on VCTK Test Set</h3>
+
+
+<p> 1. Text: We also need a small plastic snake and a big toy frog for the kids.</p>
 <table border="1" width="100%">
   <thead>
     <tr>
-      <th style="text-align: center">Speaker<strong></strong></th>
-      <th style="text-align: center"><strong>Prosody</strong></th>
-              <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-                      <th style="text-align: center"><strong>DecoupledSynth (Prosody)</strong></th>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="wuhu/s.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="wuhu/p.wav" controls="" preload=""></audio></td>
-              <td style="text-align: left"><audio src="wuhu/ss.wav" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="wuhu/sp.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="1/p238_004/3.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p238_004/1.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p238_004/2.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p238_004/4.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
+
+<p> 2. Text: Suggestions of the action being a punishment were dismissed.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="1/p248_034/3.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p248_034/1.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="1/p248_034/2.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="1/p248_034/4.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 3. Text: When a man looks for something beyond his reach, his friends say he is looking for the pot of gold at the end of the rainbow. </p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="1/p261_011/3.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p261_011/1.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="1/p261_011/2.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="1/p261_011/4.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 4. Text: Others have tried to explain the phenomenon physically.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="1/p302_017/3.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p302_017/1.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="1/p302_017/2.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="1/p302_017/4.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 5. Text: After day one back, he may be revising that opinion already.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="1/p326_140/3.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="1/p326_140/1.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="1/p326_140/2.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="1/p326_140/4.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+                <hr>
+
+        <h3>Ablation study on LibriTTS Development Set</h3>
+
+<p> 1. Text: I was walking backward, in a crouching position, when I heard Antonia scream.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/4.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/3.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 2. Text: As soon as they beheld the twilight of sense and heresy, they started, measured back their steps, and were again involved in the gloom of impenetrable orthodoxy.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/4.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/3.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 3. Text: He had stolen out during the half hour allowed at the works for tea, to buy them an orange or two, which now puffed out his jacket pocket.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/4.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/3.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+                        <hr>
+
+        <h3>Ablation study on LibriTTS Test Set</h3>
+
+
+
+<p> 2. Text: But, sir, how shall I find a teacher?</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/4.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/3.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p> 2. Text: That is to say if we suppose that A is the event remembered, B the remembering, and t the interval of time between A and B, there must be some characteristic of B which is capable of degrees, and which, in accurately dated memories, varies as t varies. It may increase as t increases, or diminish as t increases.</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/4.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/3.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 3. Text: "First, bind the Earth Man in the frame," commanded the Boolooroo. "We'll slice him in two before we do the same to the billygoat."</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>DecoupledSynth</strong></th>
+              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/4.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/3.wav" controls="" preload=""></audio></td>
+                  <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
     </div>
 
 </body>
