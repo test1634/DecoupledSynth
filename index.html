@@ -47,7 +47,15 @@
             <li>The VCTK dataset and the LibriTTS dataset are used. We resampled all speeches to 16 kHz. All comparison and ablation experiments were conducted at a sampling rate of 16 kHz.</li>
             <li>For VCTK, you can download it via https://datashare.ed.ac.uk/handle/10283/3443. </li>
             <li>For LibriTTS, you can download it via https://www.openslr.org/60/. </li>
-
+            <li>Each comparison experiment model sources are listed below:</li>
+                <ul>
+                    <li>StyleTTS: https://github.com/yl4579/StyleTTS</li>
+                    <li>VITS: https://github.com/jaywalnut310/vits</li>
+                    <li>YourTTS: https://github.com/Edresson/YourTTS</li>
+                    <li>VALL-E: https://github.com/lifeiteng/VALL-E</li>
+                    <li>TransferTTS: https://github.com/hcy71o/TransferTTS</li>
+                    <li>UniAudio: https://github.com/yangdongchao/UniAudio</li>
+                </ul>
         </ul>
         </p>
     </div>
@@ -851,11 +859,15 @@
         <h2>Ablation Study</h2>
         <li>An ablation study was conducted to verify the effectiveness of
 the Decom Features and decoupled prompts of reference speech in DecoupledSynth.</li>
+        <ul>
+            <li>"-w/o BEATS" and "-w/o W2V2" refer to training DecoupledSynth using only Wav2Vec 2.0 or only BEATs as the intermediate representation.</li>
+            <li>"-w/o Extractor" refers to training DecoupledSynth without the Decom Features Extractor, simply using Wav2Vec 2.0 and BEATs for feature extraction.</li>
+            <li>"-w/o DeRef" indicates the ablation study where the decoupled prompts of reference speech are replaced with a single prompt extracted by the style encoder.</li>
 
-        <li>For Decom Features ablation, we use Hubert features and extract timbre information using a style encoder, which are common choices for traditional zero-shot TTS speech synthesis. It is called "-w/o Decom"</li>
-                <li>For decoupled prompts of reference speech ablation, we extract the single prompt of the reference speech using a unified style encoder. It is called "-w/o DeRef"</li>
-                <li>The experimental setup was consistent with the comparison experiments.</li>
-                <li>The first 2 to 3 seconds of the ground truth speech are extracted as reference speech, with the precise duration determined by the Voice Activity Detection (VAD) cutoff point. Care is taken to ensure that the extracted segment ends at the completion of a full word pronunciation.</li>
+
+        </ul>
+        <li>The experimental setup was consistent with the comparison experiments.</li>
+        <li>The first 2 to 3 seconds of the ground truth speech are extracted as reference speech, with the precise duration determined by the Voice Activity Detection (VAD) cutoff point. Care is taken to ensure that the extracted segment ends at the completion of a full word pronunciation.</li>
         <hr>
 
 
@@ -868,7 +880,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
                       <th style="text-align: center"><strong>-w/o DeRef</strong></th>
     </tr>
   </thead>
@@ -888,7 +900,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
                       <th style="text-align: center"><strong>-w/o DeRef</strong></th>
     </tr>
   </thead>
@@ -908,7 +920,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
                       <th style="text-align: center"><strong>-w/o DeRef</strong></th>
     </tr>
   </thead>
@@ -928,7 +940,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
                       <th style="text-align: center"><strong>-w/o DeRef</strong></th>
     </tr>
   </thead>
@@ -948,7 +960,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
                       <th style="text-align: center"><strong>-w/o DeRef</strong></th>
     </tr>
   </thead>
@@ -971,8 +983,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -980,10 +991,27 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
       <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/4.wav" controls="" preload=""></audio></td>
         <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/2.wav" controls="" preload=""></audio></td>
               <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/1.wav" controls="" preload=""></audio></td>
+ </tr>
+  </tbody>
+</table>
+        <table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">-w/o BEATS<strong></strong></th>
+      <th style="text-align: center"><strong>-w/o W2V2</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/6.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/5.wav" controls="" preload=""></audio></td>
+                 <td style="text-align: left"><audio src="ablation/ld/2035_147960_000005_000002/1.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
+
+
 
 <p> 2. Text: As soon as they beheld the twilight of sense and heresy, they started, measured back their steps, and were again involved in the gloom of impenetrable orthodoxy.</p>
 <table border="1" width="100%">
@@ -991,8 +1019,7 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -1000,10 +1027,27 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
       <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/4.wav" controls="" preload=""></audio></td>
         <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/2.wav" controls="" preload=""></audio></td>
               <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/1.wav" controls="" preload=""></audio></td>
+ </tr>
+  </tbody>
+</table>
+        <table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">-w/o BEATS<strong></strong></th>
+      <th style="text-align: center"><strong>-w/o W2V2</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/6.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/5.wav" controls="" preload=""></audio></td>
+                 <td style="text-align: left"><audio src="ablation/ld/1673_143396_000017_000009/1.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
+
+
 
 <p> 3. Text: He had stolen out during the half hour allowed at the works for tea, to buy them an orange or two, which now puffed out his jacket pocket.</p>
 <table border="1" width="100%">
@@ -1011,20 +1055,34 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
+ </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/4.wav" controls="" preload=""></audio></td>
         <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/2.wav" controls="" preload=""></audio></td>
               <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/1.wav" controls="" preload=""></audio></td>
-    </tr>
+</tr>
   </tbody>
 </table>
 
+        <table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">-w/o BEATS<strong></strong></th>
+      <th style="text-align: center"><strong>-w/o W2V2</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/6.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/5.wav" controls="" preload=""></audio></td>
+                 <td style="text-align: left"><audio src="ablation/ld/1993_147149_000034_000004/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
 
 
                         <hr>
@@ -1033,26 +1091,40 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
 
 
 
-<p> 2. Text: But, sir, how shall I find a teacher?</p>
+<p> 1. Text: But, sir, how shall I find a teacher?</p>
 <table border="1" width="100%">
   <thead>
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
+</tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/4.wav" controls="" preload=""></audio></td>
         <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/2.wav" controls="" preload=""></audio></td>
               <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/1.wav" controls="" preload=""></audio></td>
-    </tr>
+</tr>
   </tbody>
 </table>
 
+        <table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">-w/o BEATS<strong></strong></th>
+      <th style="text-align: center"><strong>-w/o W2V2</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/6.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/5.wav" controls="" preload=""></audio></td>
+                 <td style="text-align: left"><audio src="ablation/lt/3729_6852_000081_000001/1.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
 
 <p> 2. Text: That is to say if we suppose that A is the event remembered, B the remembering, and t the interval of time between A and B, there must be some characteristic of B which is capable of degrees, and which, in accurately dated memories, varies as t varies. It may increase as t increases, or diminish as t increases.</p>
 <table border="1" width="100%">
@@ -1060,16 +1132,30 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
+ </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/4.wav" controls="" preload=""></audio></td>
         <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/2.wav" controls="" preload=""></audio></td>
               <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/1.wav" controls="" preload=""></audio></td>
+</tr>
+  </tbody>
+</table>
+                <table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">-w/o BEATS<strong></strong></th>
+      <th style="text-align: center"><strong>-w/o W2V2</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/6.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/5.wav" controls="" preload=""></audio></td>
+                 <td style="text-align: left"><audio src="ablation/lt/8230_279154_000012_000002/1.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
@@ -1080,20 +1166,33 @@ the Decom Features and decoupled prompts of reference speech in DecoupledSynth.<
     <tr>
       <th style="text-align: center">Ground Truth<strong></strong></th>
       <th style="text-align: center"><strong>DecoupledSynth</strong></th>
-              <th style="text-align: center"><strong>-w/o Decom</strong></th>
-                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
-    </tr>
+              <th style="text-align: center"><strong>-w/o Extractor</strong></th>
+</tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/4.wav" controls="" preload=""></audio></td>
         <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/2.wav" controls="" preload=""></audio></td>
               <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/3.wav" controls="" preload=""></audio></td>
-                  <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/1.wav" controls="" preload=""></audio></td>
+</tr>
+  </tbody>
+</table>
+                <table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">-w/o BEATS<strong></strong></th>
+      <th style="text-align: center"><strong>-w/o W2V2</strong></th>
+                      <th style="text-align: center"><strong>-w/o DeRef</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/6.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/5.wav" controls="" preload=""></audio></td>
+                 <td style="text-align: left"><audio src="ablation/lt/8555_284447_000043_000000/1.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
-
 
     </div>
     <hr>
